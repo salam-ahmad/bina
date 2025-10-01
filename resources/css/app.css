@@ -1,0 +1,135 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@font-face {
+    font-family: Speda;
+    src: url("../assets/fonts/speda.ttf") format('ttf');
+    font-display: swap;
+}
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-speda: 'speda'
+}
+@layer components {
+    .link {
+        @apply flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-green-100 dark:hover:bg-green-400 transition-colors duration-200 dark:text-green-100;
+    }
+
+    .active_link {
+        @apply bg-green-200 text-green-700 border-r-4 border-green-700;
+    }
+
+    .btn {
+        @apply px-3 py-2 text-sm font-semibold leading-6 text-white rounded-md hover:cursor-pointer;
+    }
+
+    .btn-sm {
+        @apply px-2 py-2 text-xs leading-2 text-white rounded-md hover:cursor-pointer;
+    }
+
+    .table_btn {
+        @apply inline-flex items-center justify-center text-white rounded-md bg-green-500 hover:bg-green-600 px-3 py-1 gap-3
+    }
+}
+
+@layer base {
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="date"],
+    select,
+    input[type="url"], textarea {
+        @apply dark:text-white dark:border-gray-900 dark:bg-gray-800 block w-full rounded-md border-1 border-indigo-500 p-3 text-slate-900 ring-1 ring-inset ring-slate-300 placeholder:text-slate-500 dark:placeholder:text-gray-300  focus:outline-indigo-500 dark:focus:outline-gray-200 sm:text-sm bg-white;
+    }
+
+    label {
+        @apply block text-sm font-medium leading-6 text-slate-900 first-letter:capitalize;
+    }
+
+    header {
+        @apply bg-slate-800 shadow-md;
+    }
+
+    nav {
+        @apply p-5 max-w-screen-lg mx-auto flex items-center justify-between;
+    }
+
+    .primary-btn {
+        @apply flex items-center justify-center gap-2 rounded-md bg-green-500 px-3 py-1.5  leading-6 text-white hover:bg-green-500 dark:hover:bg-green-600  focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:bg-slate-400 disabled:cursor-wait cursor-pointer;
+    }
+
+    .secondary-btn {
+        @apply flex justify-center items-center gap-2 border dark:text-green-600 hover:text-white border-green-600 rounded-md bg-white px-3 py-2  font-semibold leading-6 text-black hover:bg-green-600 disabled:bg-slate-400 disabled:cursor-wait cursor-pointer;
+    }
+
+    .nav-link {
+        @apply text-slate-200 hover:bg-slate-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium;
+    }
+
+    .title {
+        @apply my-6 text-center text-3xl font-bold leading-9 text-slate-900;
+    }
+
+    .error {
+        @apply text-xs text-red-500 mt-1;
+    }
+
+    table {
+        @apply w-full text-sm text-center rounded-md shadow-md overflow-hidden mb-4 table-auto bg-white dark:bg-gray-700 text-white;
+    }
+
+    thead {
+        @apply text-base font-bold  border-b-2 border-slate-400 text-slate-800 dark:border-slate-100;
+    }
+
+    tbody tr {
+        @apply hover:bg-slate-100 text-slate-800 w-full p-0 dark:hover:bg-gray-500 dark:text-white ;
+    }
+
+    th {
+        @apply px-6 py-4 dark:text-white;
+    }
+
+    td {
+        @apply px-6 py-2.5 border-b border-gray-200 dark:border-gray-500;
+    }
+
+
+    .avatar {
+        @apply w-8 h-8 rounded-full overflow-hidden object-center object-cover;
+    }
+
+    .round-btn {
+        @apply cursor-pointer flex items-center justify-center w-10 h-10 overflow-auto rounded-full bg-blue-500 focus:outline-none focus:ring-1 focus:ring-slate-100 focus:ring-offset-2 focus:ring-offset-slate-800;
+    }
+
+    h1 {
+        @apply dark:text-white
+    }
+
+
+    .dark .vs__dropdown-option {
+        @apply bg-gray-800 text-white ;
+    }
+
+    .dark .vs__dropdown-option--highlight {
+        @apply bg-gray-800 text-white ;
+    }
+
+    .dark .vs__dropdown-option--selected {
+        @apply bg-gray-700 text-white;
+    }
+
+
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
