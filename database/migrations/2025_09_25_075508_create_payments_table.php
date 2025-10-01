@@ -12,20 +12,18 @@ return new class extends Migration {
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->morphs('payable'); // Order|Purchase
-
-            // 'in' = cash received from customer (sales)
-            // 'out' = cash paid to supplier (purchases)
-            $table->enum('direction', ['in', 'out']); // 'in' customer→you, 'out' you→supplier
+            $table->morphs('payable');
+            $table->enum('direction', ['in', 'out']);
             $table->foreignId('currency_id')->constrained('currencies');
             $table->decimal('amount', 18, 4);
-            $table->date('date')->useCurrent();
+            $table->date('date');
             $table->text('note')->nullable();
             $table->index(['payable_type', 'payable_id', 'currency_id', 'direction']);
-
+            $table->index('date');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
+
     }
 
     /**

@@ -12,14 +12,13 @@ return new class extends Migration {
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('supplier_id')->nullable();
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreignId('supplier_id')->nullable()->constrained('suppliers')->nullOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
             $table->enum('payment_method', ['cash', 'partial', 'debt'])->nullable();
-            $table->foreign('supplier_id')->references('id')->on('suppliers');
-            $table->foreign('user_id')->references('id')->on('users');
             $table->text('note')->nullable();
             $table->date('date')->useCurrent();
             $table->timestamps();
+            $table->index('date');
         });
     }
 

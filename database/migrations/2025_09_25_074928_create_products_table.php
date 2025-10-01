@@ -12,11 +12,11 @@ return new class extends Migration {
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('code')->nullable();
             $table->string('name')->unique();
             $table->foreignId('unit_id')->constrained('units');
             $table->foreignId('currency_id')->constrained('currencies');
-            $table->double('quantity', 10, 2);
+            $table->string('code')->nullable()->index();
+            $table->decimal('quantity', 18, 3)->default(0);
             $table->text('description')->nullable();
             $table->timestamps();
         });

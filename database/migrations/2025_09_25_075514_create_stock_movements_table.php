@@ -10,15 +10,15 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('stock_movements', function (Blueprint $t) {
-            $t->id();
-            $t->foreignId('product_id')->constrained();
-            $t->decimal('quantity_change', 18, 3); // +in, -out
-            $t->morphs('source'); // OrderItem|PurchaseItem|Adjustment
-            $t->date('date')->useCurrent();
-            $t->text('note')->nullable();
-            $t->timestamps();
-            $t->index(['product_id', 'date']);
+        Schema::create('stock_movements', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('product_id')->constrained();
+            $table->decimal('quantity_change', 18, 3); // +in, -out
+            $table->morphs('source'); // OrderItem|PurchaseItem|Adjustment
+            $table->date('date')->useCurrent();
+            $table->text('note')->nullable();
+            $table->timestamps();
+            $table->index(['product_id', 'date']);
         });
     }
 

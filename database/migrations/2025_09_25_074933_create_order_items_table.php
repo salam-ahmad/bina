@@ -16,9 +16,11 @@ return new class extends Migration {
             $table->foreignId('product_id')->constrained();
             $table->foreignId('currency_id')->constrained('currencies');
             $table->decimal('unit_price', 18, 4);
-            $table->decimal('quantity', 18, 3);
+            $table->decimal('quantity',   18, 3);
             $table->timestamps();
             $table->index(['order_id', 'currency_id']);
+            $table->index(['product_id']);
+            $table->index(['order_id', 'product_id']);
         });
     }
 
