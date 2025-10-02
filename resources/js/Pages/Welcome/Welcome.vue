@@ -17,7 +17,7 @@ const props = defineProps({
             </svg>
         </div>
         <h1 class="text-red-500 text-4xl font-bold my-4">{{ $page.props.auth.user.name }}!</h1>
-        <p class="text-2xl font-bold">{{ props.setting.name }}</p>
+        <p class="text-2xl font-bold">{{ props.setting?.name }}</p>
         <p class="text-gray-600 mt-12 text-xl dark:text-white">
             بەخێربێیت بۆ سیستەمی بەڕێوەبردن. ئێستا دەتوانیت دەست بەکاریت.
         </p>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -56,6 +57,9 @@ class HandleInertiaRequests extends Middleware
                 'user' => $user,
                 'role' => $role,
                 'permissions' => $permissions
+            ],
+            'settings' => [
+                'name' => Setting::first()->name,
             ],
             'flash' => [
                 'message' => fn() => $request->session()->get('message'),
