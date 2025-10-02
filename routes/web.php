@@ -12,6 +12,7 @@ use App\Http\Controllers\Purchase\PurchaseController;
 use App\Http\Controllers\Role\RoleController;
 use App\Http\Controllers\Setting\SettingController;
 use App\Http\Controllers\Supplier\SupplierController;
+use App\Http\Controllers\Unit\UnitController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Welcome\WelcomeController;
 use Illuminate\Support\Facades\Route;
@@ -31,7 +32,11 @@ Route::middleware('auth')->group(function () {
     Route::resource('orders', OrderController::class)->names('orders');
     Route::resource('suppliers', SupplierController::class)->names('suppliers');
     Route::resource('purchases', PurchaseController::class)->names('purchases');
-
+    Route::resource('units', UnitController::class)->names('units');
+    Route::get('/users/index', [UserController::class, 'index'])->name('users.index');
+    Route::get('/users/{user}', [UserController::class, 'edit'])->name('users.edit');
+    Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
+    Route::resource('setting', SettingController::class)->names('settings');
 
     Route::get('/suppliers/{supplier}/purchases', [SupplierController::class, 'purchases'])->name('suppliers.purchases');
     Route::get('/customers/{customer}/orders', [CustomerController::class, 'orders'])->name('customers.orders');
@@ -39,10 +44,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/role/{role}', [RoleController::class, 'getPermissionsByRoleId'])->name('role.permissions');
     Route::get('/welcome', [WelcomeController::class, 'index'])->name('welcome');
 
-    Route::get('/users/index', [UserController::class, 'index'])->name('users.index');
-    Route::get('/users/{user}', [UserController::class, 'edit'])->name('users.edit');
-    Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
-    Route::resource('setting', SettingController::class)->names('settings');
 
     Route::get('/register', [AuthController::class, 'create'])->name('register');
     Route::post('/register', [AuthController::class, 'store']);
