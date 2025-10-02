@@ -23,9 +23,12 @@ class ProductUpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255|min:3',
-            'price' => 'required|numeric|min:0',
+            'code' => 'required|string|max:255|min:3|unique:products,code,' . $this->product->id,
+            'currency_id' => 'required|numeric|min:0',
+            'unit_id' => 'required|numeric|min:0',
             'quantity' => 'required|numeric|min:0',
-             'code' => 'required|string|max:255|min:3|unique:products,code,' . $this->product->id,
+            'default_buy_price' => 'required|',
+            'default_sell_price' => 'required|',
         ];
     }
 }

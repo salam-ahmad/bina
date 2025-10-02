@@ -23,8 +23,7 @@ class SupplierUpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255|unique:suppliers,name,' . $this->supplier->id,
-            'phone' => 'required|string|max:255|unique:suppliers,phone,' . $this->supplier->id,
-            'address' => 'nullable|string',
+            'phone' => 'required|string|max:255|unique:suppliers,phone,' . $this->supplier->id
         ];
     }
 }

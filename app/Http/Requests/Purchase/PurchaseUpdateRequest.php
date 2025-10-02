@@ -22,7 +22,9 @@ class PurchaseUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'supplier_id' => 'nullable|exists:suppliers,id',
+            'user_id' => 'required|exists:users,id',
+            'date' => 'required|date',
         ];
     }
 }

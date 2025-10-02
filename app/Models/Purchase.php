@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Purchase extends Model
 {
     protected $guarded = [];
-
+    protected $casts = [
+        'date' => 'date',
+    ];
     public function items()
     {
         return $this->hasMany(PurchaseItem::class);

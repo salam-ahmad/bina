@@ -24,8 +24,6 @@ class OrderUpdateRequest extends FormRequest
         return [
             'customer_id' => 'nullable|exists:customers,id',
             'status' => 'required|in:cash,loan',
-            'total' => 'required|numeric|min:1',
-            'note' => 'nullable|string',
 //            'order_items' => 'required|array',
 //            'order_items.*.product_id' => 'required|exists:products,id',
 //            'order_items.*.category_id' => 'required|exists:categories,id',

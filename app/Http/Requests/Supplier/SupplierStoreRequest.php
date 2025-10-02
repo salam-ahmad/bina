@@ -23,8 +23,7 @@ class SupplierStoreRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255|unique:suppliers,name',
-            'phone' => 'required|string|max:255|unique:suppliers,phone',
-            'address' => 'nullable|string',
+            'phone' => 'required|string|max:255|unique:suppliers,phone'
         ];
     }
 }

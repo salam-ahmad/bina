@@ -24,9 +24,11 @@ class ProductCreateRequest extends FormRequest
         return [
             'name' => 'required|string|max:255|min:3',
             'code' => 'required|string|max:255|min:3|unique:products,code',
-            'price' => 'required|numeric|min:0',
-            'rate_in' => 'required|numeric|min:0',
+            'currency_id' => 'required|numeric|min:0',
+            'unit_id' => 'required|numeric|min:0',
             'quantity' => 'required|numeric|min:0',
+            'default_buy_price' => 'required|',
+            'default_sell_price' => 'required|',
         ];
     }
 }

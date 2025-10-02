@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('customer_id')->nullable()->constrained('customers')->restrictOnDelete();
             $table->foreignId('user_id')->constrained('users')->restrictOnDelete();
-            $table->enum('payment_method', ['cash', 'partial', 'debt'])->nullable();
+            $table->enum('payment_method', ['cash', 'partial', 'debt'])->default('cash');
             $table->text('note')->nullable();
             $table->date('date')->useCurrent();
             $table->timestamps();

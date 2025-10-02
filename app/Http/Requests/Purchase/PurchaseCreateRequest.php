@@ -23,7 +23,8 @@ class PurchaseCreateRequest extends FormRequest
     {
         return [
             'supplier_id' => 'nullable|exists:suppliers,id',
-            'total' => 'required',
-         ];
+            'user_id' => 'required|exists:users,id',
+            'date' => 'required|date',
+        ];
     }
 }
