@@ -13,11 +13,11 @@ const props = defineProps({
 </script>
 
 <template>
-    <Head title="بینینی کڕیار - "/>
+    <Head title="بینینی کڕیار "/>
     <div class="container mx-auto mt-4">
         <div class="flex items-center justify-between p-4 border border-gray-200 rounded-md">
             <h1 class="text-sm lg:text-xl">بینینی کڕیار</h1>
-            <Link :href="route('customers.edit',{id:props.customer.id})" class="primary-btn" v-if="hasPermission('customer_edit')">
+            <Link :href="route('customers.edit',{id:props.customer.id})" class="primary-btn">
                 <span>گۆڕین</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="size-5" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>

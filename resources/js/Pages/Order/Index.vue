@@ -41,12 +41,13 @@ const submit = () => {
 </script>
 
 <template>
-    <Head title="فرۆشراو - "/>
+    <Head title="فرۆشراو"/>
     <div class="container mx-auto mt-2 ">
         <div class="flex items-center justify-between  border border-gray-200 rounded-md p-4">
             <h1 class="text-sm lg:text-xl">لیستی فرۆشراو</h1>
             <div class="flex  items-center gap-2 ">
-                <Link class="primary-btn flex items-center justify-between gap-2" :href="route('orders.create')" v-if="hasPermission('order_add')">
+                <!--v-if="hasPermission('order_add')"-->
+                <Link class="primary-btn flex items-center justify-between gap-2" :href="route('orders.create')">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/>
                     </svg>

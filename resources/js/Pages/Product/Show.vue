@@ -27,8 +27,8 @@ const props = defineProps({
         <div class="border border-gray-200 rounded-md p-4 mt-6">
             <TextInput name="ناو" v-model="props.product.name" type="text" :readonly="true"/>
             <TextInput name="کۆد" v-model="props.product.code" type="text" :readonly="true"/>
-            <TextInput name="نرخی کڕین" v-model="props.product.price" type="text" :thousand-separator="true" :readonly="true"/>
-            <TextInput name="نرخی فرۆشتن" v-model="props.product.rate_in" type="text" :thousand-separator="true" :readonly="true"/>
+            <TextInput name="نرخی کڕین" v-model="props.product.default_buy_price" type="text" :thousand-separator="true" :readonly="true"/>
+            <TextInput name="نرخی فرۆشتن" v-model="props.product.default_sell_price" type="text" :thousand-separator="true" :readonly="true"/>
             <TextInput name="بڕی کاڵا" v-model="props.product.quantity" type="text" :thousand-separator="true" :readonly="true"/>
         </div>
     </div>

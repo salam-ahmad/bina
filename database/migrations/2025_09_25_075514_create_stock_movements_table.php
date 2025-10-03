@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('stock_movements', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->constrained();
-            $table->decimal('quantity_change', 18, 3); // +in, -out
+            $table->double('quantity_change'); // +in, -out
             $table->morphs('source'); // OrderItem|PurchaseItem|Adjustment
             $table->date('date')->useCurrent();
             $table->text('note')->nullable();

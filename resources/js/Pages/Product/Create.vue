@@ -4,13 +4,25 @@ import {useForm} from "@inertiajs/vue3";
 import Swal from 'sweetalert2'
 import SearchableSelect from "@/Pages/Components/SearchableSelect.vue";
 
+const props = defineProps({
+    units: {
+        type: Object,
+        required: true
+    },
+    currencies: {
+        type: Object,
+        required: true
+    }
+})
 const form = useForm({
-    category_id: null,
     name: null,
-    price: null,
-    rate_in: null,
+    unit_id: null,
+    currency_id: null,
+    code: null,
     quantity: null,
-    code: null
+    default_buy_price: null,
+    default_sell_price: null,
+    description: null
 })
 
 const submit = () => {
@@ -30,7 +42,7 @@ const submit = () => {
 </script>
 
 <template>
-    <Head title="زیادکردنی کاڵا - "/>
+    <Head title="زیادکردنی کاڵا  "/>
     <div class="container mx-auto mt-4">
         <div class="flex items-center justify-between p-4 border border-gray-200 rounded-md">
             <h1 class="text-sm lg:text-xl">زیادکردنی کاڵا</h1>
@@ -44,13 +56,41 @@ const submit = () => {
 
             </Link>
         </div>
-        <form @submit.prevent="submit" class="border border-gray-200 rounded-md p-4 mt-6">
+        <form @submit.prevent="submit" class="border border-gray-200 rounded-md p-4 mt-2">
 
-            <TextInput name="ناو" v-model="form.name" :message="form.errors.name" type="text"/>
-            <TextInput name="کۆد" v-model="form.code" :message="form.errors.code" type="text"/>
-            <TextInput name="نرخی کڕین" v-model="form.rate_in" :message="form.errors.rate_in" type="text" :thousand-separator="true"/>
-            <TextInput name="نرخی فرۆشتن" v-model="form.price" :message="form.errors.price" type="text" :thousand-separator="true"/>
+            <TextInput name="ناوی کاڵا" v-model="form.name" :message="form.errors.name" type="text"/>
+            <TextInput name="کۆد (اختیاری)" v-model="form.code" type="text"/>
+            <TextInput name="نرخی کڕین" v-model="form.default_buy_price" :message="form.errors.default_buy_price" type="text" :thousand-separator="true"/>
+            <TextInput name="نرخی فرۆشتن" v-model="form.default_sell_price" :message="form.errors.default_sell_price" type="text" :thousand-separator="true"/>
             <TextInput name="بڕی کاڵا" v-model="form.quantity" :message="form.errors.quantity" type="text" :thousand-separator="true"/>
+            <div class="mb-4">
+                <label for="customer_id" class="block text-sm font-medium text-gray-700 mb-2">ناوی پێوانە</label>
+                <SearchableSelect
+                    v-model="form.unit_id"
+                    :options="units"
+                    placeholder="پێوانە"
+                    label="name"
+                    value-prop="id"
+                    :error="form.errors.unit_id"
+                    no-options-text="هیچ نەدۆزرایەوە"
+                />
+            </div>
+            <div class="mb-4">
+                <label for="customer_id" class="block text-sm font-medium text-gray-700 mb-2">جۆری دراو</label>
+                <SearchableSelect
+                    v-model="form.currency_id"
+                    :options="currencies"
+                    placeholder="جۆری دراو"
+                    label="name"
+                    value-prop="id"
+                    :error="form.errors.currency_id"
+                    no-options-text="هیچ نەدۆزرایەوە"
+                />
+            </div>
+            <div class="mb-4">
+                <label for="note">تێبینی :</label>
+                <textarea id="note" cols="30" rows="10" v-model="form.description"></textarea>
+            </div>
             <button type="submit" class="primary-btn" :disabled="form.processing">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="size-6" viewBox="0 0 16 16">
                     <path d="M11 2H9v3h2z"/>

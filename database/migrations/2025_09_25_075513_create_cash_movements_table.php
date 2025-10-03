@@ -15,9 +15,9 @@ return new class extends Migration {
             $table->morphs('source');                 // e.g. payments:id
             $table->enum('direction', ['in','out']);  // mirror of payment direction
             $table->foreignId('currency_id')->constrained('currencies');
-            $table->decimal('amount', 18, 4);
+            $table->double('amount');
             $table->dateTime('occurred_at')->useCurrent();
-            $table->decimal('balance_after', 18, 4)->nullable();
+            $table->double('balance_after')->nullable();
             $table->text('note')->nullable();
             $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamps();

@@ -47,7 +47,7 @@ class OrderController extends Controller
     public function create(Request $request): \Inertia\Response
     {
         $customers = Customer::all();
-        $products = Product::query()
+        $products = Product::query()->with(['unit', 'currency'])
             ->when($request->search, function ($query, $search) {
                 $query->where(function ($q) use ($search) {
                     $q->where('name', 'like', "%{$search}%")

@@ -10,15 +10,15 @@ const props = defineProps({
 
 <template>
     <div class="container mx-auto mt-2">
-        <Head title="- زانیاری دوکان"/>
+        <Head title=" زانیاری دوکان"/>
         <div class="flex items-center justify-between px-4 mb-4 border border-gray-200 rounded-md p-4">
             <h1 class="text-sm lg:text-xl">زانیاری دوکان</h1>
-            <Link class="primary-btn w-fit" :href="route('settings.create')">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/>
-                </svg>
-                <span>زیادکردن</span>
-            </Link>
+<!--            <Link class="primary-btn w-fit" :href="route('settings.create')">-->
+<!--                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">-->
+<!--                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/>-->
+<!--                </svg>-->
+<!--                <span>زیادکردن</span>-->
+<!--            </Link>-->
         </div>
         <div class="border border-gray-200 rounded-md mt-4 p-4">
             <div class="overflow-x-auto">

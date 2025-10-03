@@ -32,7 +32,7 @@ onMounted(() => {
     <div class="lg:flex min-h-screen">
         <!-- Mobile Header -->
         <header class="bg-white dark:bg-gray-900 h-16 flex justify-between items-center lg:hidden w-full p-4">
-            <span class="text-xl dark:text-gray-200">{{$page.props.settings.name}}</span>
+            <span class="text-xl dark:text-gray-200">{{ $page.props.settings.name }}</span>
             <svg @click="toggleSidebar" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                  stroke-width="1.5" stroke="currentColor" class="cursor-pointer w-8 h-8 dark:text-gray-200">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -48,9 +48,9 @@ onMounted(() => {
             <div>
                 <div class="pb-10 border-b border-b-gray-400 flex flex-col items-center gap-y-4 py-5 px-3 dark:text-white">
                     <Link href="/" class="text-2xl font-semibold" @click="closeSidebar">
-                        <span class="text-center">{{$page.props.settings.name}}</span>
+                        <span class="text-center">{{ $page.props.settings.name }}</span>
                     </Link>
-                    {{  $page.props.auth.user.name }}
+                    {{ $page.props.auth.user.name }}
                 </div>
                 <div class="flex flex-col justify-between ">
                     <div class="space-y-1 py-5 px-3 dark:text-white" v-if="$page.props.auth.user">
@@ -83,6 +83,7 @@ onMounted(() => {
                         <!--v-if="hasPermission('purchase_list')"-->
                         <Link :href="route('purchases.index')" class="link" :class="{'active_link': $page.component.startsWith('Purchase')}" @click="closeSidebar"> کڕین</Link>
                         <Link :href="route('units.index')" class="link" :class="{'active_link': $page.component.startsWith('Unit')}" @click="closeSidebar"> پێوانەکان</Link>
+                        <Link :href="route('currencies.index')" class="link" :class="{'active_link': $page.component.startsWith('Currency')}" @click="closeSidebar"> دراو</Link>
                         <Link :href="route('users.index')" class="link" :class="{'active_link': $page.component.startsWith('User')}" @click="closeSidebar">
                             بەکارهێنەران
                         </Link>

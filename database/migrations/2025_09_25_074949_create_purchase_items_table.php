@@ -15,8 +15,8 @@ return new class extends Migration {
             $table->foreignId('purchase_id')->constrained('purchases');
             $table->foreignId('product_id')->constrained('products');
             $table->foreignId('currency_id')->constrained('currencies');
-            $table->decimal('unit_price', 18, 4);
-            $table->decimal('quantity', 18, 3);
+            $table->double('unit_price');
+            $table->double('quantity');
             $table->timestamps();
             $table->index(['purchase_id', 'currency_id']);
             $table->index(['purchase_id', 'product_id']);

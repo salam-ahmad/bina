@@ -167,6 +167,7 @@ const showMessage = (icon, title) => {
 </script>
 
 <template>
+    <Head title="فرۆشتن"/>
     <div class="container mx-auto mt-4">
         <div class="flex gap-4 items-center justify-between p-4 border border-gray-200 rounded-md mb-4 ">
             <input type="search" class="flex-1" placeholder="گەڕان بەپێی ناو یان کۆد ..." v-model="search">
@@ -182,10 +183,11 @@ const showMessage = (icon, title) => {
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-4">
                 <div class="flex flex-col h-full p-4 border border-gray-400 rounded-md text-center" v-for="item in props.products.data" :key="item.id">
                     <div class="space-y-2 flex-grow dark:text-white mb-4">
-                        <h5 class="text-xl"> نرخ / <span class="text-red-500">{{ formatNumber(item.price) }}</span></h5>
+                        <h5 class="text-xl"> نرخ / <span class="text-red-500">{{ formatNumber(item.default_sell_price) }}</span></h5>
                         <p>{{ item.name }}</p>
-                        <p>کۆد / {{ item.code }}</p>
-                        <p>بڕی ماوە / <span class="text-red-500">{{ item.quantity }}</span></p> <!-- Fixed class name -->
+                        <p v-if="item.code">کۆد / {{ item.code }}</p>
+                        <p>بڕی ماوە / <span class="text-red-500">{{ formatNumber(item.quantity) }}</span> <span class="text-xs">{{item.unit.name}}</span></p>
+                        <p>جۆری دراو / <span class="text-xs">{{item.currency.name}}</span></p>
                     </div>
                     <button class="primary-btn mt-auto flex items-center justify-center gap-2" @click="addRow(item)" :disabled="item.quantity<1">
                         <span>زیادکردن</span>
@@ -259,13 +261,13 @@ const showMessage = (icon, title) => {
                                 <td>{{ item.code }}</td>
                                 <td>{{ item.name }}</td>
                                 <td>
-                                    <input type="number" min="250" step="250" class="text-center" v-model.number="item.price"/>
+                                    <input type="number" min="250" step="250" class="text-center" v-model.number="item.default_sell_price"/>
                                 </td>
                                 <td>
                                     <input type="number" min="1" :max="item.stock" class="text-center" v-model.number="item.quantity"/>
                                 </td>
                                 <td>
-                                    {{ item.quantity && item.price ? formatNumber(item.quantity * item.price) : 0 }}
+                                    {{ item.quantity && item.default_sell_price ? formatNumber(item.quantity * item.default_sell_price) : 0 }}
                                 </td>
                                 <td>
                                     <button class="text-white rounded-md bg-red-500 hover:bg-red-600 px-3 py-1 cursor-pointer flex items-center justify-center mx-auto" @click="deleteRow(index)">

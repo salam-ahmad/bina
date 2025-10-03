@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->morphs('payable');
             $table->enum('direction', ['in', 'out']);
             $table->foreignId('currency_id')->constrained('currencies');
-            $table->decimal('amount', 18, 4);
+            $table->double('amount');
             $table->date('date');
             $table->text('note')->nullable();
             $table->index(['payable_type', 'payable_id', 'currency_id', 'direction']);

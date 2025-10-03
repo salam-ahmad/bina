@@ -21,7 +21,7 @@ const form = useForm({
 })
 
 const submit = () => {
-    if (hasPermission('customer_edit')) {
+    // if (hasPermission('customer_edit')) {
         form.put(route('customers.update', {id: props.customer.id}), {
             onSuccess: () => {
                 Swal.fire({
@@ -34,13 +34,13 @@ const submit = () => {
                 });
             }
         });
-    }
+    // }
 
 }
 </script>
 
 <template>
-    <Head title="گۆڕینی کڕیار - "/>
+    <Head title="گۆڕینی کڕیار"/>
     <div class="container mx-auto mt-4">
         <div class="flex items-center justify-between p-4 border border-gray-200 rounded-md">
             <h1 class="text-sm lg:text-xl">گۆڕینی کڕیار / {{ props.customer.name }}</h1>
@@ -49,7 +49,6 @@ const submit = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
                 </svg>
-
             </Link>
         </div>
         <form @submit.prevent="submit" class="border border-gray-200 rounded-md p-4 mt-6">
@@ -69,7 +68,3 @@ const submit = () => {
         </form>
     </div>
 </template>
-
-<style scoped>
-
-</style>

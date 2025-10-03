@@ -16,9 +16,9 @@ return new class extends Migration {
             $table->foreignId('unit_id')->constrained('units');
             $table->foreignId('currency_id')->constrained('currencies');
             $table->string('code')->nullable()->index();
-            $table->decimal('quantity', 18, 3)->default(0);
-            $table->decimal('default_buy_price',  18, 4)->nullable();
-            $table->decimal('default_sell_price', 18, 4)->nullable();
+            $table->double('quantity')->default(0);
+            $table->double('default_buy_price')->nullable();
+            $table->double('default_sell_price')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
         });

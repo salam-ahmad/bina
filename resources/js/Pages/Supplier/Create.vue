@@ -5,8 +5,6 @@ import Swal from 'sweetalert2'
 import {usePermissions} from '@/composables/usePermissions';
 
 const {hasPermission} = usePermissions();
-
-
 const form = useForm({
     name: null,
     phone: null,
@@ -14,7 +12,7 @@ const form = useForm({
 })
 
 const submit = () => {
-    if (hasPermission('supplier_add')) {
+    // if (hasPermission('supplier_add')) {
         form.post(route('suppliers.store'), {
             onSuccess: () => {
                 Swal.fire({
@@ -27,13 +25,12 @@ const submit = () => {
                 });
             }
         });
-    }
-
+    // }
 }
 </script>
 
 <template>
-    <Head title="زیادکردنی فرۆشیار - "/>
+    <Head title="زیادکردنی فرۆشیار"/>
     <div class="container mx-auto mt-4">
         <div class="flex items-center justify-between p-4 border border-gray-200 rounded-md">
             <h1 class="text-sm lg:text-xl">زیادکردنی فرۆشیار</h1>
@@ -48,6 +45,10 @@ const submit = () => {
             <TextInput name="ناو" v-model="form.name" :message="form.errors.name" type="text"/>
             <TextInput name="مۆبایل" v-model="form.phone" :message="form.errors.phone" type="text"/>
             <TextInput name="ناونیشان" v-model="form.address" :message="form.errors.address" type="text"/>
+            <div class="mb-4">
+                <label for="note">تێبینی :</label>
+                <textarea id="note" cols="30" rows="10" v-model="form.note"></textarea>
+            </div>
             <button type="submit" class="primary-btn " :disabled="form.processing">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="size-5" viewBox="0 0 16 16">
                     <path d="M11 2H9v3h2z"/>
@@ -60,6 +61,3 @@ const submit = () => {
     </div>
 </template>
 
-<style scoped>
-
-</style>

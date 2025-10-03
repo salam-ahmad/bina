@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Product;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\ProductCreateRequest;
 use App\Http\Requests\Product\ProductUpdateRequest;
+use App\Models\Currency;
 use App\Models\Product;
+use App\Models\Unit;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -16,7 +18,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $products = Product::where('name', 'like', '%' . $request->input('search') . '%')
+        $products = Product::with(['unit','currency'])->where('name', 'like', '%' . $request->input('search') . '%')
             ->orderBy('created_at', 'desc')
             ->paginate(20)
             ->withQueryString();
@@ -25,7 +27,9 @@ class ProductController extends Controller
 
     public function create(): \Inertia\Response
     {
-        return Inertia::render('Product/Create');
+        $units = Unit::all();
+        $currencies = Currency::all();
+        return Inertia::render('Product/Create', ['units' => $units, 'currencies' => $currencies]);
     }
 
     /**
@@ -50,7 +54,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product): \Inertia\Response
     {
-         return Inertia::render('Product/Edit', ['product' => $product]);
+        return Inertia::render('Product/Edit', ['product' => $product]);
     }
 
     /**

@@ -70,7 +70,7 @@ const submitForm = () => {
                     </label>
                 </div>
             </div>
-            <button type="button" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md mt-10" @click="submitForm">
+            <button type="button" class="primary-btn mt-6" @click="submitForm">
                 خەزنکردن
             </button>
         </div>

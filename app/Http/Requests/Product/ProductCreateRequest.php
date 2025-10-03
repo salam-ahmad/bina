@@ -23,12 +23,12 @@ class ProductCreateRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255|min:3',
-            'code' => 'required|string|max:255|min:3|unique:products,code',
-            'currency_id' => 'required|numeric|min:0',
-            'unit_id' => 'required|numeric|min:0',
+            'code' => 'nullable|string|max:255|min:3|unique:products,code',
+            'currency_id' => 'required|numeric|exists:currencies,id',
+            'unit_id' => 'required|numeric|exists:units,id',
             'quantity' => 'required|numeric|min:0',
-            'default_buy_price' => 'required|',
-            'default_sell_price' => 'required|',
+            'default_buy_price' => 'required',
+            'default_sell_price' => 'required',
         ];
     }
 }

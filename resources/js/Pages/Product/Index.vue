@@ -42,22 +42,24 @@ watch(
                     <thead>
                     <tr>
                         <th>ID</th>
-                         <th>ناوی کاڵا</th>
+                        <th>ناوی کاڵا</th>
                         <th>کۆدی کاڵا</th>
-                        <th>نرخی کڕین</th>
                         <th>نرخی فرۆشتن</th>
+                        <th>نرخی کڕین</th>
                         <th>بڕی کاڵا</th>
+                        <th>جۆری دراو</th>
                         <th>گۆڕانکاریەکان</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr v-for="product in props.products.data" :key="product.id">
                         <td>{{ product.id }}</td>
-                         <td :class="{'text-red-500': product.quantity < 1}">{{ product.name }}</td>
+                        <td :class="{'text-red-500': product.quantity < 1}">{{ product.name }}</td>
                         <td>{{ product.code }}</td>
-                        <td>{{ formatNumber(product.rate_in) }}</td>
-                        <td>{{ formatNumber(product.price) }}</td>
-                        <td>{{ formatNumber(product.quantity) }}</td>
+                        <td>{{ formatNumber(product.default_sell_price) }}</td>
+                        <td>{{ formatNumber(product.default_buy_price) }}</td>
+                        <td>{{ formatNumber(product.quantity) }} - {{product.unit.name}}</td>
+                        <td>{{ product.currency.name}}</td>
                         <td class="space-x-1">
                             <Link :href="route('products.show',{id:product.id})" class="table_btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">

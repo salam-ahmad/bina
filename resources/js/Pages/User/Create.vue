@@ -45,7 +45,7 @@ const submit = () => {
                 <TextInput name="وشەتێپەڕ" v-model="form.password" :message="form.errors.password" type="password"/>
                 <TextInput name="دوپاتی وشەتێپەڕ" v-model="form.password_confirmation" type="password"/>
                 <div class="mb-6">
-                    <label for="customer_id" class="block text-sm font-medium text-gray-700 mb-2">ناوی بازرگان</label>
+                    <label for="customer_id" class="block text-sm font-medium text-gray-700 mb-2">ناوی ڕۆڵ</label>
                     <SearchableSelect
                         v-model="form.role_id"
                         :options="roles"
@@ -53,7 +53,7 @@ const submit = () => {
                         label="name"
                         value-prop="id"
                         :error="form.errors.role_id"
-                        no-options-text="هیچ ڕۆڵێک نەدۆزرایەوە"
+                        no-options-text="هیچ  نەدۆزرایەوە"
                     />
                 </div>
                 <div class="mt-4">

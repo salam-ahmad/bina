@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Currency\CurrencyController;
 use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Deposit\DepositController;
 use App\Http\Controllers\Order\OrderController;
@@ -33,6 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('suppliers', SupplierController::class)->names('suppliers');
     Route::resource('purchases', PurchaseController::class)->names('purchases');
     Route::resource('units', UnitController::class)->names('units');
+    Route::resource('currencies', CurrencyController::class)->names('currencies');
     Route::get('/users/index', [UserController::class, 'index'])->name('users.index');
     Route::get('/users/{user}', [UserController::class, 'edit'])->name('users.edit');
     Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
